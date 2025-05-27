@@ -10,12 +10,71 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <title>Estimation Form</title>
   </head>
   <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
+    <h1>Freedom Impact Windows and Doors</h1>
     <p id="info"></p>
+
+    <form action="/submit" method="post" enctype="multipart/form-data">
+    <!-- Dropdown 1 -->
+    <label for="dropdown1">Option Set 1:</label>
+    <select name="dropdown1" id="dropdown1">
+      <option value="option1a">Option 1A</option>
+      <option value="option1b">Option 1B</option>
+      <option value="option1c">Option 1C</option>
+    </select>
+    <br><br>
+
+    <!-- Dropdown 2 -->
+    <label for="dropdown2">Option Set 2:</label>
+    <select name="dropdown2" id="dropdown2">
+      <option value="option2a">Option 2A</option>
+      <option value="option2b">Option 2B</option>
+      <option value="option2c">Option 2C</option>
+    </select>
+    <br><br>
+
+    <!-- Dropdown 3 -->
+    <label for="dropdown3">Option Set 3:</label>
+    <select name="dropdown3" id="dropdown3">
+      <option value="option3a">Option 3A</option>
+      <option value="option3b">Option 3B</option>
+      <option value="option3c">Option 3C</option>
+    </select>
+    <br><br>
+
+    <!-- File upload -->
+    <label for="fileUpload">Upload File:</label>
+    <input type="file" name="fileUpload" id="fileUpload">
+    <br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
   </body>
+  
+  <script>
+  document.getElementById('myForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent page reload
+
+    const dropdown1 = document.getElementById('dropdown1').value;
+    const dropdown2 = document.getElementById('dropdown2').value;
+    const dropdown3 = document.getElementById('dropdown3').value;
+    const fileInput = document.getElementById('fileUpload');
+
+    const file = fileInput.files[0];
+
+    console.log("Dropdown 1:", dropdown1);
+    console.log("Dropdown 2:", dropdown2);
+    console.log("Dropdown 3:", dropdown3);
+    console.log("File:", file);
+
+    // Optionally send data to main process or save it
+    // window.electronAPI.sendData({ dropdown1, dropdown2, dropdown3, filePath: file.path });
+  });
+  </script>
+
   <script src="./renderer.js"></script>
+
 </html>
